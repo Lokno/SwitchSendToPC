@@ -34,6 +34,8 @@ Media served by Switch will likely be at: http://192.168.0.1/index.html
 
 - Requires Python 3.6+
 - Requires opencv-python
+- Requires pillow (works with latest version, 9.4.0)
+- Requires appdirs
 - Your PC must have a WiFi Adapter
 - Linux requires nmcli and must be run with root privileges
 - videoinput.dll (included, 64-bit) is used to match names to capture devices on Windows (https://github.com/hasegaw/videoInput)
@@ -44,3 +46,6 @@ Media served by Switch will likely be at: http://192.168.0.1/index.html
 pyinstaller -F --add-binary="win/videoinput.dll;." --add-data="icon.ico;." --windowed --icon icon.ico ./switch_send_to_pc.py
 ```
 
+## Running without compilation
+
+`python switch_send_to_pc.py`
