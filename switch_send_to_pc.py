@@ -21,7 +21,7 @@ try:
 except ModuleNotFoundError:
     print('appdirs module Not Found')
     print('  install via pip:')
-    print('    python -m pip install appdir')
+    print('    python -m pip install appdirs')
     exit(-1)
 
 try:
@@ -97,8 +97,7 @@ class ConnectSwitchWifi:
 
         self.selected_device = tk.StringVar()
 
-        self.device_frame = tk.Frame(self.root)
-        self.device_frame.pack(side=tk.TOP)
+        self.device_frame = tk.Frame(self.root,pady=5)
         
         if platform == 'win32':
             videoinput = VideoInputWrapper()
@@ -116,7 +115,7 @@ class ConnectSwitchWifi:
                     self.index = self.device_name_to_index[self.device_name]
 
             self.device_dropdown = ttk.Combobox(self.device_frame, textvariable=self.selected_device, values=self.devices, state="readonly")
-            self.device_dropdown.pack(side=tk.LEFT)
+            self.device_dropdown.pack(padx=5,side=tk.LEFT)
             self.device_dropdown.bind("<<ComboboxSelected>>", self.update)
 
             self.config_button = tk.Button(self.device_frame, text="Configure...", command=self.reset)
@@ -138,19 +137,21 @@ class ConnectSwitchWifi:
                 self.selected_device.set(self.device_name)
 
             self.device_entry = tk.Entry(self.device_frame, textvariable=self.selected_device)
-            self.device_entry.pack(side=tk.LEFT)
+            self.device_entry.pack(padx=5,side=tk.LEFT)
 
             self.switch_button = tk.Button(self.device_frame, text="Switch Device", command=self.update)
-            self.switch_button.pack(side=tk.LEFT)
+            self.switch_button.pack(padx=5,side=tk.LEFT)
 
             self.config_button = tk.Button(self.device_frame, text="Configure...", command=self.reset)
-            self.config_button.pack(side=tk.LEFT)
+            self.config_button.pack(padx=5,side=tk.LEFT)
 
         self.connect_button = tk.Button(self.device_frame, text="Connect", command=self.connect)
-        self.connect_button.pack(side=tk.LEFT)
+        self.connect_button.pack(padx=5,side=tk.LEFT)
         
         if self.state != self.states.SETUP:
             self.connect_button.config(state="disabled")
+
+        self.device_frame.pack(side=tk.TOP)
 
         img = Image.new("RGB", (640, 480), "black")
         self.blank_img = ImageTk.PhotoImage(image=img)
