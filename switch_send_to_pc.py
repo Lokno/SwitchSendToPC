@@ -68,7 +68,10 @@ class ConnectSwitchWifi:
         self.wifi_profile_created = False
         self.wifi_connection = False
 
-        root.iconbitmap(get_resource_path("icon.ico"))
+        try:
+            root.iconbitmap(get_resource_path("icon.ico"))
+        except tk.TclError:
+            pass
 
         # delay before connecting after adding a new profile
         self.delay_connect = 3000 # ms

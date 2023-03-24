@@ -38,7 +38,7 @@ Media served by Switch will likely be at: http://192.168.0.1/index.html
 - Linux requires nmcli and must be run with root privileges
 - videoinput.dll (included, 64-bit) is used to match names to capture devices on Windows (https://github.com/hasegaw/videoInput)
 
-## Compilation
+## Compilation (Windows and Mac OS)
 
 ```sh
 pyinstaller -F --add-binary="win/videoinput.dll;." --add-data="icon.ico;." --windowed --icon icon.ico ./switch_send_to_pc.py
